@@ -60,6 +60,10 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\bin\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\bin\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\bin\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\bin\</OutDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName)_d</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectName)_d</TargetName>
   </PropertyGroup>
@@ -70,14 +74,6 @@
       </PrecompiledHeader>
       <PreprocessorDefinitions>WIN32;STATIC_LIB;_DEBUG;_USRDLL;$(ProjectName)_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <Link>
-      <AdditionalDependencies>freetype2410_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>..\..\bin\$(ProjectName)_d.dll</OutputFile>
-      <AdditionalLibraryDirectories>..\..\..\support\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <DataExecutionPrevention>
-      </DataExecutionPrevention>
-    </Link>
     <Lib>
       <AdditionalLibraryDirectories>..\..\..\support\lib;</AdditionalLibraryDirectories>
       <AdditionalDependencies>freetype2410_D.lib;</AdditionalDependencies>
@@ -90,14 +86,6 @@
       </PrecompiledHeader>
       <PreprocessorDefinitions>WIN32;STATIC_LIB;_DEBUG;_USRDLL;$(ProjectName)_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <Link>
-      <AdditionalDependencies>freetype2410_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>..\..\bin\$(ProjectName)_d.dll</OutputFile>
-      <AdditionalLibraryDirectories>..\..\..\support\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <DataExecutionPrevention>
-      </DataExecutionPrevention>
-    </Link>
     <Lib>
       <AdditionalLibraryDirectories>..\..\..\support\lib;</AdditionalLibraryDirectories>
       <AdditionalDependencies>freetype2410_D.lib;</AdditionalDependencies>
@@ -109,14 +97,6 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PreprocessorDefinitions>WIN32;STATIC_LIB;NDEBUG;_USRDLL;$(ProjectName)_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <Link>
-      <AdditionalDependencies>freetype2410.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>..\..\bin\$(ProjectName).dll</OutputFile>
-      <AdditionalLibraryDirectories>..\..\..\support\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <DataExecutionPrevention>
-      </DataExecutionPrevention>
-    </Link>
     <Lib>
       <AdditionalLibraryDirectories>..\..\..\support\lib;</AdditionalLibraryDirectories>
       <AdditionalDependencies>freetype2410.lib;</AdditionalDependencies>
@@ -128,14 +108,6 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PreprocessorDefinitions>WIN32;STATIC_LIB;NDEBUG;_USRDLL;$(ProjectName)_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <Link>
-      <AdditionalDependencies>freetype2410.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>..\..\bin\$(ProjectName).dll</OutputFile>
-      <AdditionalLibraryDirectories>..\..\..\support\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <DataExecutionPrevention>
-      </DataExecutionPrevention>
-    </Link>
     <Lib>
       <AdditionalLibraryDirectories>..\..\..\support\lib;</AdditionalLibraryDirectories>
       <AdditionalDependencies>freetype2410.lib;</AdditionalDependencies>

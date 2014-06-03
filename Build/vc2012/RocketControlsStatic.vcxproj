@@ -79,6 +79,7 @@
       <PreprocessorDefinitions>_WIN32;STATIC_LIB;_DEBUG;RocketControls_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>
       </PrecompiledHeader>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

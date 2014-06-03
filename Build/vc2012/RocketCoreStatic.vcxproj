@@ -73,6 +73,7 @@
       <PrecompiledHeader>
       </PrecompiledHeader>
       <PreprocessorDefinitions>WIN32;STATIC_LIB;_DEBUG;_USRDLL;$(ProjectName)_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
     </ClCompile>
     <Lib>
       <AdditionalLibraryDirectories>..\..\..\support\lib;</AdditionalLibraryDirectories>

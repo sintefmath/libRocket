@@ -73,6 +73,55 @@ void HighScores::GetRow(Rocket::Core::StringList& row, const Rocket::Core::Strin
 			{
 				row.push_back(Rocket::Core::String(8, "%d", scores[row_index].wave));
 			}
+			else if (columns[i] == Rocket::Controls::DataSource::CHILD_SOURCE)
+			{
+				row.push_back(Rocket::Core::String(24, "high_scores.player_%d", row_index));
+			}
+		}
+	}
+	else
+	{
+		int player_index;
+		if (sscanf(table.CString(), "player_%d", &player_index) == 1)
+		{
+			// Translate the row_index to the actual index into the alien_kills array - as there might be gaps in the
+			// array we may have to skip those entries.
+			int alien_kills_array_index = row_index;
+			for (int i = 0; i < NUM_ALIEN_TYPES && i <= alien_kills_array_index; i++)
+			{
+				if (scores[row_index].alien_kills[i] == 0)
+					alien_kills_array_index++;
+			}
+
+			for (size_t i = 0; i < columns.size(); i++)
+			{
+				if (columns[i] == "name")
+				{
+					row.push_back(ALIEN_NAMES[row_index]);
+				}
+				else if (columns[i] == "score")
+				{
+					row.push_back(Rocket::Core::String(8, "%d", ALIEN_SCORES[row_index]));
+				}
+				else if (columns[i] == "colour")
+				{
+					Rocket::Core::String colour_string;
+					Rocket::Core::TypeConverter< Rocket::Core::Colourb, Rocket::Core::String >::Convert(Rocket::Core::Colourb(255, 255, 255), colour_string);
+					row.push_back(colour_string);
+				}
+				else if (columns[i] == "wave")
+				{
+					int num_kills = scores[player_index].alien_kills[alien_kills_array_index];
+					if (num_kills == 1)
+						row.push_back(Rocket::Core::String("1 kill"));
+					else
+						row.push_back(Rocket::Core::String(16, "%d kills", num_kills));
+				}
+				else if (columns[i] == Rocket::Controls::DataSource::CHILD_SOURCE)
+				{
+					row.push_back(Rocket::Core::String(""));
+				}
+			}
 		}
 	}
 }
@@ -90,6 +139,20 @@ int HighScores::GetNumRows(const Rocket::Core::String& table)
 		}
 
 		return NUM_SCORES;
+	}
+	else {int player_index;
+		if (sscanf(table.CString(), "player_%d", &player_index) == 1)
+		{
+			int num_alien_types = 0;
+			for (int i = 0; i < NUM_ALIEN_TYPES; i++)
+			{
+				if (scores[player_index].alien_kills[i] > 0)
+				{
+					num_alien_types++;
+				}
+			}
+			return num_alien_types;
+		}
 	}
 
 	return 0;
@@ -116,6 +179,13 @@ void HighScores::SubmitScore(const Rocket::Core::String& name, const Rocket::Cor
 			for (int j = 0; j < NUM_ALIEN_TYPES; j++)
 			{
 				scores[i].alien_kills[j] = alien_kills[j];
+			}
+			
+			// Send the row removal message (if necessary).
+			bool max_rows = scores[NUM_SCORES - 1].score != -1;
+			if (max_rows)
+			{
+				NotifyRowRemove("scores", NUM_SCORES - 1, 1);
 			}
 
 			NotifyRowAdd("scores", i, 1);

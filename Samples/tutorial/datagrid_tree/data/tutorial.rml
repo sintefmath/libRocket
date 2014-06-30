@@ -6,7 +6,7 @@
 		body
 		{
 			width: 400px;
-			height: 300px;
+			height: 500px;
 
 			margin: auto;
 		}
@@ -102,11 +102,12 @@
 	</style>
 </head>
 <body template="window">
-	<datagrid source="high_scores.scores">
+	<datagrid source="high_scores.scores"  overflow="scroll" >
+		<col fields="#num_children" formatter="expand_button" width="10%"></col> 
 		<col fields="name" width="40%">Pilot:</col>
 		<col fields="colour" formatter="ship" width="20%">Ship:</col>
 		<col fields="wave" width="20%">Wave:</col>
-		<col fields="score" width="20%">Score:</col>
+		<col fields="score" width="10%">Score:</col>
 	</datagrid>
 </body>
 </rml>

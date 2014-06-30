@@ -28,4 +28,14 @@ class HighScoresShipFormatter : public Rocket::Controls::DataFormatter
 		void FormatData(Rocket::Core::String& formatted_data, const Rocket::Core::StringList& raw_data);
 };
 
+
+class ExpandButtonFormatter : public Rocket::Controls::DataFormatter
+{
+	public:
+		ExpandButtonFormatter();
+		~ExpandButtonFormatter();
+	
+		void FormatData(Rocket::Core::String& formatted_data, const Rocket::Core::StringList& raw_data);
+};
+
 #endif

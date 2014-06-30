@@ -32,3 +32,25 @@ void HighScoresShipFormatter::FormatData(Rocket::Core::String& formatted_data, c
 
 	formatted_data = "<defender style=\"color: rgb(" + colour_string + ");\" />";
 }
+
+
+ExpandButtonFormatter::ExpandButtonFormatter() : Rocket::Controls::DataFormatter("expand_button") {}
+ExpandButtonFormatter::~ExpandButtonFormatter() {}
+
+void ExpandButtonFormatter::FormatData(Rocket::Core::String& formatted_data, const Rocket::Core::StringList& raw_data)
+{
+	// Data format:
+	// raw_data[0] is the number of children that this row has. 0 means no button, more than 0 mean a button.
+
+	int num_children = 0;
+	Rocket::Core::TypeConverter< Rocket::Core::String, int >::Convert(raw_data[0], num_children);
+	
+	if (num_children > 0)
+	{
+		formatted_data = "<datagridexpand />";
+	}
+	else
+	{
+		formatted_data = "";
+	}
+}

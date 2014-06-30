@@ -77,6 +77,7 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 
 	// Add the ship formatter.
 	HighScoresShipFormatter ship_formatter;
+	ExpandButtonFormatter button_formatter;
 
 	// Construct the high scores.
 	HighScores::Initialise();

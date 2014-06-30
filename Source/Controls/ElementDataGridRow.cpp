@@ -247,8 +247,10 @@ ElementDataGrid* ElementDataGridRow::GetParentGrid()
 
 void ElementDataGridRow::OnDataSourceDestroy(DataSource* ROCKET_UNUSED(_data_source))
 {
-	data_source->DetachListener(this);
-	data_source = NULL;
+	if (data_source != NULL) {
+		data_source->DetachListener(this);
+		data_source = NULL;
+	}
 
 	RemoveChildren();
 }
